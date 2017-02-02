@@ -82,6 +82,7 @@ var app = {
     // Enable or disable the backgroud mode
     onModeButtonClicked: function() {
         var plugin = cordova.plugins.backgroundMode;
+        console.log("button clicked:" + !plugin.isEnabled());
         plugin.setEnabled(!plugin.isEnabled());
     },
     // Update CSS classes
@@ -89,6 +90,7 @@ var app = {
         var btn = document.getElementById('mode');
         app.setButtonClass(btn, true);
         cordova.plugins.notification.badge.registerPermission();
+        console.log("enabled");
     },
     // Update CSS classes
     onModeDisabled: function() {
@@ -107,6 +109,7 @@ var app = {
     timer: null,
     // Update badge once mode gets activated
     onModeActivated: function() {
+        console.log("activated");
         var counter = 0;
 
         app.timer = setInterval(function () {
@@ -129,6 +132,7 @@ var app = {
     },
     // Reset badge once deactivated
     onModeDeactivated: function() {
+        console.log("deactivated");
         cordova.plugins.notification.badge.clear();
         clearInterval(app.timer);
     }
